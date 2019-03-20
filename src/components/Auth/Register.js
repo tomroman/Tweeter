@@ -2,6 +2,17 @@ import React, { Component } from 'react'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = { 
+    textField: {
+        width: '100%'
+    }, 
+    btnBlock: {
+        textAlign: 'center'
+    }
+
+}
 
 class Register extends Component {
     constructor (props) {
@@ -15,18 +26,37 @@ class Register extends Component {
         }
     }
     render() {
+        const { classes } = this.props;
+
         return (
             <Paper>
                 <form>
                     <TextField
                         type="email"
                         label="Email"
+                        className={classes.textField}
                     />
                     <TextField
-                        label="login"
-                        placeholder=""
+                        label="Login"
+                        type="text"
+                        className={classes.textField}
                     />
-                    <Button />
+                    <TextField
+                        label="password"
+                        type="password"
+                        className={classes.textField}
+                    />
+                    <TextField
+                        label="repeat password"
+                        type="password"
+                        className={classes.textField}
+                    />
+                    <div className={classes.btnBlock}>                    
+                    <Button variant='outlined' >
+                        Submit
+                
+                    </Button> 
+                    </div>
                 </form>
             </Paper>
         )
@@ -34,4 +64,4 @@ class Register extends Component {
     }
 }
 
-export default Register
+export default withStyles(styles)(Register)
