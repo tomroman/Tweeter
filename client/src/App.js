@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-
+import { Provider } from 'react-redux'
+import store from './store'
 import Main from './components/Layout/Main'
+
 import Home from './components/Home'
 import Register from './components/Auth/Register'
 import Login from './components/Auth/Login'
@@ -9,6 +11,7 @@ import Login from './components/Auth/Login'
 class App extends Component {
   render() {
     return (
+      <Provider store = {store}> 
       <div>
         <BrowserRouter>
           <Main>
@@ -20,6 +23,7 @@ class App extends Component {
           </Main>
         </BrowserRouter>
       </div>
+      </Provider> 
     );
   }
 }
