@@ -3,7 +3,7 @@ const Validator = require('validator')
 module.exports = function (data) { 
     let errors = {}
 
-    if (!Validator.isEmpty(data.email)) {
+    if (Validator.isEmpty(data.email)) {
         errors.email = 'Email field is required'
     }
 
@@ -27,12 +27,12 @@ module.exports = function (data) {
     if (Validator.isEmpty(data.password2)) {
         errors.password2 = "Confirm password is required"
     }
-    if (Validator.equals(data.password, data.password2)) {
+    if (!Validator.equals(data.password, data.password2)) {
         errors.password2 = 'Password must match'
     }
 
     return {
         errors, 
-        isValid: object.keys(errors).length === 0
+        isValid: Object.keys(errors).length === 0
     }
 }
