@@ -1,5 +1,9 @@
 import axios from 'axios'
-import { GET_ERRORS } from '../constants'
+import { GET_ERRORS, SET_CURRENT_USER } from '../constants'
+
+export const loginUser = (userData) => dispatch => {
+     
+}
 
 
 export const registerUser = (userData, history) => dispatch => {
@@ -12,4 +16,16 @@ export const registerUser = (userData, history) => dispatch => {
         }))
         
         
+}
+
+export const getCurrentUser = () => dispatch => {
+    axios.get('http://localhost:5000/api/users')
+        .then(res => dispatch(setCurrentUser(res.data)))
+}
+
+export const setCurrentUser = (data) => {
+        return {
+        type: SET_CURRENT_USER, 
+        payload: data
+    }
 }
