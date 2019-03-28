@@ -3,7 +3,9 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles'
-
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginUser } from '../../actions/authActions'
 
 const styles = { 
     textField: {
@@ -33,6 +35,11 @@ class Login extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+    componentDidMount () {
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push('/')
+        }
+    }
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors})
@@ -49,7 +56,8 @@ class Login extends Component {
             password:this.state.password, 
             
         }
-        console.log(userData)
+        this.props.loginUser(userData)
+        
     }
     render() {
         const{ classes } = this.props; 
@@ -94,9 +102,11 @@ class Login extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    auth: state.auth, 
+    errors: state.errors
+})
 
 
-
-
-export default withStyles(styles)(Login)
+export default connect(mapStateToProps, { loginUser })(withRouter(withStyles(styles)(Login))) 
 

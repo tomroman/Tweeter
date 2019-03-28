@@ -14,7 +14,7 @@ export default function (state = initialState, action) {
 
             return {
                 ...state,
-                isAuthenticated: Object.keys(actions.payload).length !== 0,
+                isAuthenticated: Object.keys(action.payload).length !== 0,
                 user: action.payload
             }
         default: 
