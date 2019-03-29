@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import jwt_decode from 'jwt-decode'
 import store from './store'
 import Main from './components/Layout/Main'
 
 import Home from './components/Home'
 import Register from './components/Auth/Register'
 import Login from './components/Auth/Login'
+import { logoutUser, getCurrentUser } from './actions/authActions';
+import setAuthHeader from './utils/setAuthHeader'
+
+if (localStorage.getItem('jwToken')) {
+  
+  const currentTime = Date.now() / 1000
+  const decode = jwt_decode(localStorage.getItem('jwToken'))
+
+  if(currentTime > decode.exp ) {
+    store.dispatch(logoutUser())
+  } else {
+    setAuthHeader(localStorage.getItem('jwToken'))
+    store.dispatch(getCurrentUser())
+  }
+}
 
 class App extends Component {
   render() {
