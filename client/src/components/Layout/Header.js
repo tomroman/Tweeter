@@ -1,12 +1,19 @@
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+
+import { Link } from 'react-router-dom'
 import { withStyles} from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 
 const styles = {
     root: {
         flexGrow: 1 
+    }, 
+    logo: {
+        color: '#fff',
+        fontSize: 30, 
+        TextTransform: 'uppercase'
     }
 }
 
@@ -15,14 +22,15 @@ const Header = ({ classes }) => {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant ="h6" color="inherit">
-                        Tweeter
-
-                    </Typography>
+                    <Link to="/" className={classes.logo}>Tweeter</Link> 
                 </Toolbar>
             </AppBar>
         </div>
     )
 } 
 
-export default withStyles(styles)(Header)
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth
+})
+
+export default connect(mapStateToProps)(withStyles(styles)(Header))

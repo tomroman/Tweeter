@@ -12,7 +12,7 @@ const styles = {
 const Footer = ({ classes }) => (
     <div className ={classes.root}>
         <MadeWithLove 
-            by="Tom R"
+            by="Tom Roman"
             emoji
             link= "https://github.com/tomroman"
 
