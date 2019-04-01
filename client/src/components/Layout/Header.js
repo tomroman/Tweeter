@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
@@ -16,6 +19,9 @@ const styles = {
         TextTransform: 'uppercase'
     }
 }
+handleMenu = (event) => {this.setState({ anchorEl: event.target.currentTarget })} 
+
+handleColor = () => {this.setState({ anchorEl: null })}
 
 class Header extends Component {
     constructor (props) {
@@ -26,11 +32,18 @@ class Header extends Component {
     }
     render() {
         const { classes } =this.props;
+
+        const authLinks = (
+            <div>
+
+            </div> 
+        )
         return (
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: '#480882' }}>
                     <Toolbar>
                         <Link to="/" className={classes.logo}>Tweeter</Link>
+                        
                     </Toolbar>
                 </AppBar>
             </div>
