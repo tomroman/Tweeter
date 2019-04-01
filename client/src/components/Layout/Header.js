@@ -20,7 +20,7 @@ const styles = {
 const Header = ({ classes }) => {
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" style={{ backgroundColor: '#480882'}}>
                 <Toolbar>
                     <Link to="/" className={classes.logo}>Tweeter</Link> 
                 </Toolbar>
