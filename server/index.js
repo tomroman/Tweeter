@@ -2,9 +2,10 @@ const express = require ('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const users = require('./routes/users')
+
 const cors = require('cors')
 const passport = require('passport')
+const users = require('./routes/users')
 
 
 //setup environment 

@@ -51,10 +51,10 @@ router.route('/login')
             .then(user => {
                 if (user) {
 
-                    bcrypt.compare(user.password, req.body.password)
+                    bcrypt.compare(req.body.password, user.password)
                         .then(isMatch => {
                             if (isMatch) {
-                                const token = jwt.sign({ id: user._id }.process.env.SECRET, { expiressIn: 'Id' }, function (err, token) {
+                                const token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: '1d' }, function (err, token) {
 
 
                                     return res.json({

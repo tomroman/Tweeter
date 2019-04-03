@@ -18,6 +18,7 @@ if (localStorage.getItem('jwToken')) {
 
   if(currentTime > decode.exp ) {
     store.dispatch(logoutUser())
+    window.location.href ='/'
   } else {
     setAuthHeader(localStorage.getItem('jwToken'))
     store.dispatch(getCurrentUser())
