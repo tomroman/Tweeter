@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import AddPost from './AddPost'
 
 
 class ListPost extends Component {
     render () {
         return (
             <div>
-                This is ListPost Page
+                <AddPost />
             </div> 
         )
     }

@@ -6,12 +6,13 @@ import Login from './Auth/Login'
 
 class Home extends Component {
 
-    render () {
+    render() {
         const { isAuthenticated } = this.props
         return (
-            <div> 
-                { isAuthenticated ? ListPost : Login }
-            </div> 
+            <div>
+                {isAuthenticated ? <ListPost /> : <Login />}
+            </div>
+
         )
     }
 }
@@ -19,4 +20,4 @@ class Home extends Component {
 const mapStateToProps = (state) => ({
     isAuthenticated: !!state.auth.isAuthenticated
 })
-export default connect(mapStateToProps) (Home)
+export default connect(mapStateToProps)(Home)
